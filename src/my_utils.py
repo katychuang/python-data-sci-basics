@@ -186,6 +186,8 @@ def save_spreadsheet(filename, data_sample):
 # --------------------------------------
 
 ## Stage 5 begin
+import matplotlib.pyplot as plt
+
 #5.a Line charts
 def create_line_chart(sample, title, exported_figure_filename):
     fig = plt.figure()

@@ -8,6 +8,7 @@
 
 import numpy
 
+
 ## Stage 2 begin
 
 fieldNames = ['', 'id', 'priceLabel', 'name','brandId', 'brandName', 'imageLink',
@@ -18,14 +19,14 @@ dataTypes = [('myint', 'i'), ('myid', 'i'), ('price', 'f8'), ('name', 'a200'),
              ('description', '|S900'),  ('vendor', '|S100'),  ('pattern', '|S50'),  ('material', '|S50'), ]
 
 def load_data(filename):
-    my_csv = numpy.genfromtxt(filename, delimiter='\t', skip_header=1,
+	my_csv = numpy.genfromtxt(filename, delimiter='\t', skip_header=1,
                             names=fieldNames, invalid_raise=False, 
                             dtype=dataTypes)
-    return my_csv
+	return my_csv
 
 #2.a count
 def size(my_csv):
-    print("Length (numpy): {}".format(my_csv.size))
+	print("Length (numpy): {}".format(my_csv.size))
 
 #2.b sum
 def calculate_numpy_sum(my_field):
@@ -75,7 +76,6 @@ from my_utils import write_to_file, write_brand_and_price_to_file
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
-def create_chart_for_embed(plot, sample, title):
 def plot_all_bars(prices_in_float, exported_figure_filename):
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
@@ -86,32 +86,32 @@ def plot_all_bars(prices_in_float, exported_figure_filename):
     ax.set_xlim([0, 5055])
     fig.savefig(exported_figure_filename)
 
+def create_chart_for_embed(sample, title):
     prices = sorted(map(int, sample))
-    xAxisTicks = list( range(len(prices)) )
-    width=0.25
-    plot.plot(xAxisTicks, prices, 'g', label='price points',linewidth=2)
+    x_axis_ticks = list( range(len(sample)) )
+    plt.plot(x_axis_ticks, prices, 'g', label='price points', linewidth=2)
 
 def export_chart(sample, title):
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
     prices = sorted(map(int, sample))
-    xAxisTicks = list( range(len(prices)) )
-    width=0.25
-    tempChartVar = pylab.plot(xAxisTicks, prices, 'g', label='price points',linewidth=2)
-    plt.title(title)
-    plt.xlabel(title)
-    plt.ylabel('Number of Ties')
+    x_axis_ticks = list( range(len(sample)) )
+    ax.plot(x_axis_ticks, prices, 'g', label='price points', linewidth=2)
+    ax.set_title(title)
+    ax.set_xlabel(title)
+    ax.set_ylabel('Number of Ties')
     if len(prices) > 20:
-        plt.xlim([0, round(len(prices), -1)])
+        ax.set_xlim([0, round(len(prices), -1)])
     else:
-        plt.xlim([0, len(prices)])
-    plt.show()
-    plt.savefig('_charts/' + title + '.png')
+        ax.set_xlim([0, len(prices)])
+    fig.savefig('_charts/' + title + '.png')
 
 def prices_of_list(sampleData):
-    tempList = []
+    temp_list = []
     for row in sampleData[1:]:
         priceCol = float(row[2])
-        tempList.append(priceCol)
-    return tempList
+        temp_list.append(priceCol)
+    return temp_list
 
 ## Stage 5 end
 
