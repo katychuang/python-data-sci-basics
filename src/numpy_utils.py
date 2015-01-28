@@ -8,7 +8,6 @@
 
 import numpy
 
-
 ## Stage 2 begin
 
 fieldNames = ['', 'id', 'priceLabel', 'name','brandId', 'brandName', 'imageLink',
@@ -19,18 +18,26 @@ dataTypes = [('myint', 'i'), ('myid', 'i'), ('price', 'f8'), ('name', 'a200'),
              ('description', '|S900'),  ('vendor', '|S100'),  ('pattern', '|S50'),  ('material', '|S50'), ]
 
 def load_data(filename):
-	my_csv = numpy.genfromtxt(filename, delimiter='\t', skip_header=1,
-                            names=fieldNames, invalid_raise=False,
+    my_csv = numpy.genfromtxt(filename, delimiter='\t', skip_header=1,
+                            names=fieldNames, invalid_raise=False, 
                             dtype=dataTypes)
-	return my_csv
+    return my_csv
 
+#2.a count
 def size(my_csv):
-	print("Shape (rows, col): {}".format(my_csv.shape))
+    print("Length (numpy): {}".format(my_csv.size))
 
-def number_of_records(my_csv):
-	print("Length: {}".format(my_csv.size))
+#2.b sum
+def calculate_numpy_sum(price):
+    prices_in_float = [float(line) for line in price] 
+    total = numpy.sum(prices_in_float)
+    return total
+
+#2.c mean
+# use my_utils.average
 
 ## Stage 2 end
+
 
 # --------------------------------------
 

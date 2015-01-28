@@ -5,6 +5,7 @@
 # Created: Nov 2014
 
 # --------------------------------------
+## Stage 2 begin
 
 import csv 
 
@@ -17,13 +18,28 @@ def open_with_CSV(filename, d='\t'):
             uuids.append(row)
     return uuids
 
-# Calculate sum
+#2.a size
+def number_of_records(data_sample):
+    return len(data_sample)
+
+
+#2.b calculate sum
 def calculate_sum(data_sample):
-	theSum = 0
-	for row in data_sample[1:]:
-	    price = float(row[2])
-	    theSum += price
-	return theSum
+    total = 0
+    for row in data_sample[1:]:
+        price = float(row[2])
+        total += price
+    return total
+
+#2.c 1 # Find the average price
+def average_price(data_sample, headers=False):
+    total = calculate_sum(data_sample)
+    size = number_of_records(data_sample)
+    if headers:
+        total -= 1
+
+    average = total / size
+    return average
 
 ## Stage 2 end
 
