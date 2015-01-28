@@ -76,6 +76,16 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
 def create_chart_for_embed(plot, sample, title):
+def plot_all_bars(prices_in_float, exported_figure_filename):
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    prices = list(map(int, prices_in_float))
+    X = numpy.arange(len(prices))
+    width = 0.25
+    ax.bar(X+width, prices, width) 
+    ax.set_xlim([0, 5055])
+    fig.savefig(exported_figure_filename)
+
     prices = sorted(map(int, sample))
     xAxisTicks = list( range(len(prices)) )
     width=0.25

@@ -201,6 +201,27 @@ def create_line_chart(sample, title, exported_figure_filename):
     fig.savefig(exported_figure_filename)
 
 
+#5.b bar charts
+def create_bar_chart(price_groups, exported_figure_filename):
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    colors=plt.rcParams['axes.color_cycle']
+     
+    for group in price_groups:
+        ax.bar(group, price_groups[group], color=colors[group%len(price_groups)])
+
+    labels = ["$0-50", "$50-100", "$100-150", "$150-200", "$200-250", "$250+"]
+    ax.legend(labels)
+
+    ax.set_title('Amount of Ties at price points')
+    ax.set_xlabel('Tie Price ($)')
+    ax.set_xticklabels(labels, ha='left')
+    ax.set_xticks( range(1, len(price_groups)+1) )
+    ax.set_ylabel('Number of Ties')
+
+    plt.grid(True)
+    fig.savefig(exported_figure_filename)
+
 
 def print_brand_avg_min(name):
     tieSample = filterByString(dataFromCSV, "brandName", name)
