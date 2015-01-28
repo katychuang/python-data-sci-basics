@@ -10,7 +10,7 @@
 import csv 
 
 # open a file and return a double list
-def open_with_CSV(filename, d='\t'):
+def open_with_csv(filename, d='\t'):
     uuids = []
     with open(filename) as tsvin:
         tsvin = csv.reader(tsvin, delimiter=d)
@@ -25,11 +25,11 @@ def number_of_records(data_sample):
 
 #2.b calculate sum
 def calculate_sum(data_sample):
-    total = 0
-    for row in data_sample[1:]:
-        price = float(row[2])
-        total += price
-    return total
+	total = 0
+	for row in data_sample[1:]:
+	    price = float(row[2])
+	    total += price
+	return total
 
 #2.c 1 # Find the average price
 def find_average(data_sample, headers=False):
