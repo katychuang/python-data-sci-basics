@@ -28,72 +28,35 @@ def size(my_csv):
     print("Length (numpy): {}".format(my_csv.size))
 
 #2.b sum
-def calculate_numpy_sum(price):
-    prices_in_float = [float(line) for line in price] 
-    total = numpy.sum(prices_in_float)
+def calculate_numpy_sum(my_field):
+    field_in_float = [float(item) for item in my_field] 
+    total = numpy.sum(field_in_float)
     return total
 
 #2.c mean
-# use my_utils.average
+def find_numpy_average(my_field):
+    field_in_float = [float(item) for item in my_field] 
+    total = calculate_numpy_sum(field_in_float)
+    size = len(my_field)
+    average = total / size
+    return average
+
+#2.d max, min
+def numpy_max(my_field_in_float):
+    return numpy.amax(my_field_in_float)
+ 
+def numpy_min(my_field_in_float):
+    return numpy.amin(my_field_in_float)
+
+
 
 ## Stage 2 end
-
 
 # --------------------------------------
 
 ## Stage 3 begin
 
-def filter_col_by_string(theData, field, filterCondition):
-    filteredRows = []
-    
-    #find index of field in first row
-    col = int(theData[0].index(field))
-    
-    for row in theData[1:]:
-        if row[col] == filterCondition:
-            filteredRows.append(row)
-    return filteredRows
-
-def filter_col_by_float(theData, field, direction, filterCondition):
-    filteredRows = []
-    
-    #find index of field in first row
-    col = int(theData[0].index(field))
-    cond = float(filterCondition)
-    
-    for row in theData[1:]:
-        element = float(row[col])
-        
-        if direction == "<":
-            if element < cond:
-                filteredRows.append(row)
-                
-        elif direction == "<=":
-            if element <= cond:
-                filteredRows.append(row)
-
-        elif direction == ">":
-            if element > cond:
-                filteredRows.append(row)
-
-        elif  direction == ">=":
-            if element >= cond:
-                filteredRows.append(row)
-                
-        elif  direction == "==":
-            if element == cond:
-                filteredRows.append(row)
-        else:
-            pass
-        
-    return filteredRows
-
-def calculate_numpy_sum(theData):
-    tSum = 0
-    for row in theData:
-        price = float(row[2])
-        tSum += price
-    return tSum
+from my_utils import filter_col_by_string, filter_col_by_float
 
 ## Stage 3 end
 
@@ -101,24 +64,7 @@ def calculate_numpy_sum(theData):
 
 ## Stage 4 begin
 
-def write_brand_and_price_to_file(filename, dataSample):
-
-    # confirm that the columns only have two columns, otherwise take the two fields
-    numFields = len(dataSample[0])
-    
-    brandFieldIndex = 5 #int(dataSample[0].index("brand"))
-    priceFieldIndex = 2 #int(dataSample[0].index("priceLabel"))
-    
-    #if numFields > 2:
-    newArray = []
-    for record in dataSample:
-        newRecord = [None] * 2
-        newRecord[0] = record[brandFieldIndex]
-        newRecord[1] = record[priceFieldIndex]
-        newArray.append(newRecord)
-
-    # write the file
-    writeToFile2(filename, newArray)  
+from my_utils import write_to_file, write_brand_and_price_to_file
 
 ## Stage 4 end
 
