@@ -1,7 +1,7 @@
-examples of using Python for introductory data science
+examples of using Python for introductory data science concepts
 
 
-# Outline
+# Course Outline
 
 
 Stage 2: Describing Data
