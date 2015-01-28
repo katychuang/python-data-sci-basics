@@ -223,12 +223,26 @@ def create_bar_chart(price_groups, exported_figure_filename):
     fig.savefig(exported_figure_filename)
 
 
-def print_brand_avg_min(name):
-    tieSample = filterByString(dataFromCSV, "brandName", name)
-    avgPrice = calculateSum(tieSample) / len(tieSample)
-    minPrice = findMin(tieSample[1:], 2)
-    print("{2} Average: ${0:6.2f}; Min: ${1:.2f}".format(avgPrice, minPrice, name))
 #5.c tables
+def create_table(data_sample, price_groups, brand_names, columns, exported_figure_filename):
+    tup = build_table_text(data_sample, brand_names)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+
+    for group in price_groups:
+        plt.bar(group, price_groups[group]) #color=colors[group%len(price_groups)]
+
+    ax.table(cellText=tup[0], colLabels=columns, rowLabels=tup[1], loc='bottom')
+    ax.text(-1.3, 0, 'Discounted Ties Brands', size=12, horizontalalignment='left', verticalalignment='top')
+    ax.tick_params(
+        axis='x',          # changes apply to the x-axis
+        which='both',      # both major and minor ticks are affected
+        labelbottom='off') # labels along the bottom edge are off
+
+    fig.savefig(exported_figure_filename, dpi=400, bbox_inches='tight')
+
+
 from collections import Counter
 def group_prices_by_range(prices_in_float):
     
@@ -254,6 +268,45 @@ def group_prices_by_range(prices_in_float):
 
         tally[bucket] += 1
     return tally
+
+def count_prices_for_brands(data_sample, brand, min_price, max_price):
+    count = 0
+    for row in data_sample: 
+        if str(row[0]) == str(brand):
+            if float(row[1]) < max_price:
+                if float(row[1]) > min_price:
+                    count += 1
+    return count
+
+def build_table_text(data_sample, brands):  
+    cell_text = []
+    row_text = []
+
+    unique_brand_list = sorted(set(brands))
+    for b in unique_brand_list:
+        b = bytes.decode(b)
+        temp_row = [] 
+        group1 = count_prices_for_brands(data_sample, b, 0, 50.00)
+        group2 = count_prices_for_brands(data_sample, b, 50.00, 100.00)
+        group3 = count_prices_for_brands(data_sample, b, 100.00, 150.00)
+        group4 = count_prices_for_brands(data_sample, b, 150.00, 200.00)
+        group5 = count_prices_for_brands(data_sample, b, 200.00, 250.00)
+        group6 = count_prices_for_brands(data_sample, b, 250.00, 1000.00)
+        row_list = [group1, group2, group3, group4, group5, group6]
+        temp_row.extend(row_list) 
+        
+        if group1 > 0:
+            if any(x >= group1 for x in row_list[1:]):
+                cell_text.append(temp_row)
+                row_text.append(b)
+
+    return (cell_text, row_text)
+
+def print_brand_avg_min(name, data_from_csv):
+    tie_sample = filter_col_by_string(data_from_csv, "brandName", name)
+    avg_price = calculate_sum(tie_sample) / len(tie_sample)
+    min_price = find_min(tie_sample[1:], 2)
+    print("{2} Average: ${0:6.2f}; Min: ${1:.2f}".format(avg_price, min_price, name))
 
 
 ## Stage 5 end
