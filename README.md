@@ -1,1 +1,1 @@
-# intro-data-sci
+examples of using Python for introductory data science
