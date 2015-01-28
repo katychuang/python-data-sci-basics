@@ -3,6 +3,9 @@ examples of using Python for introductory data science concepts
 
 # Course Outline
 
+Stage 1: Introduction
+
+- [Installation](https://github.com/katychuang/intro-data-sci-with-python#installation-and-setup)
 
 Stage 2: Describing Data
 
