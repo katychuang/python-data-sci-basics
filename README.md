@@ -44,3 +44,12 @@ Stage 6: Reports
 - Adjusting backgrounds and lines
 - Create PDFs
 - Code Challenge
+
+
+# Installation and Setup
+
+You'll need Python3, numpy, and matplotlib.
+
+`pip install -r requirements.txt`
+
+To see examples, run `python src/examples.py`
