@@ -228,6 +228,32 @@ def print_brand_avg_min(name):
     avgPrice = calculateSum(tieSample) / len(tieSample)
     minPrice = findMin(tieSample[1:], 2)
     print("{2} Average: ${0:6.2f}; Min: ${1:.2f}".format(avgPrice, minPrice, name))
+#5.c tables
+from collections import Counter
+def group_prices_by_range(prices_in_float):
+    
+    tally = Counter()
+
+    for item in prices_in_float:
+        bucket = 0
+        rounded_price = round(item, -1)
+        if rounded_price >= 0 and rounded_price <= 50:
+            bucket = 1
+        elif rounded_price >= 50 and rounded_price <= 100:
+            bucket = 2
+        elif rounded_price >= 100 and rounded_price <= 150:
+            bucket = 3
+        elif rounded_price >= 150 and rounded_price <= 200:
+            bucket = 4
+        elif rounded_price >= 200 and rounded_price <= 250:
+            bucket = 5
+        elif rounded_price >= 250:
+            bucket = 6
+        else:
+            bucket = 7
+
+        tally[bucket] += 1
+    return tally
 
 
 ## Stage 5 end
