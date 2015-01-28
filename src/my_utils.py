@@ -186,19 +186,20 @@ def save_spreadsheet(filename, data_sample):
 # --------------------------------------
 
 ## Stage 5 begin
+#5.a Line charts
+def create_line_chart(sample, title, exported_figure_filename):
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
 
-def create_chart(plot, sample, title):
     prices = sorted(map(int, sample))
-    xAxisTicks = list( range(len(prices)) )
-    width=0.25
-    plot.plot(xAxisTicks, prices, 'g', label='price points',linewidth=2)
+    x_axis_ticks = list( range(len(sample)) )
+    ax.plot(x_axis_ticks, prices, label='price points', linewidth=2)
+    ax.set_title(title)
+    ax.set_xlabel('Tie Price ($)')
+    ax.set_ylabel('Number of Ties')
+    ax.set_xlim([0,len(sample)])
+    fig.savefig(exported_figure_filename)
 
-def prices_of(sampleData):
-    tempList = []
-    for row in sampleData[1:]:
-        priceCol = float(row[2])
-        tempList.append(priceCol)
-    return tempList
 
 
 def print_brand_avg_min(name):
