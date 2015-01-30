@@ -226,6 +226,22 @@ def create_bar_chart(price_groups, exported_figure_filename):
 
 
 #5.c tables
+
+import prettytable
+from prettytable import PrettyTable
+
+def my_table(data_sample):
+
+    x = PrettyTable(data_sample[0])
+    x.align["City name"] = "l" 
+    x.padding_width = 1 
+
+    for row in data_sample[1:]:
+        x.add_row(row)
+    
+    print(x)
+
+
 def create_table(data_sample, price_groups, brand_names, columns, exported_figure_filename):
     tup = build_table_text(data_sample, brand_names)
 
