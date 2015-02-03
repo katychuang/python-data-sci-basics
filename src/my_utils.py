@@ -161,6 +161,55 @@ def write_brand_and_price_to_file(filename, data_sample):
     # write the file
     write_to_file(filename, new_array)  
 
+def write_min_max_csv(filename, data_sample):
+
+    #find min & max price from data_sample
+    min = find_max_min(data_sample, 2, "min")
+    max = find_max_min(data_sample, 2, "max")
+
+    new_array = []
+    for record in data_sample:
+
+        if (float(record[2]) == min) or (float(record[2]) == max): 
+            new_array.append(record)
+
+    write_to_file(filename, new_array)  
+
+
+#csv with just 2 columns
+def write_two_cols(filename, data_sample, col1, col2):    
+
+    #if numFields > 2:
+    new_array = []
+    for record in data_sample:
+        new_record = [None] * 2
+        new_record[0] = record[col1]
+        new_record[1] = record[col2]
+        new_array.append(new_record)
+
+    # write the file
+    write_to_file(filename, new_array)
+
+#csv with sorted prices
+# ascending is going up i.e. A-Z 
+# descending is going down i.e. Z-A 
+
+def write_sorted_prices(filename, data_sample, order="ascending"):
+
+    if order == "descending":
+        data_sample.sort(key=lambda x: float(x[2]), reverse=False)
+    else:
+        data_sample.sort(key=lambda x: float(x[2]), reverse=True)
+
+    write_to_file(filename, data_sample) 
+
+#append another file
+def write_append_file(filename, new_data_to_add):
+    with open(filename, "a") as myfile:
+        for row in new_data_to_add:
+            myfile.write(str(row))
+
+
 #4.c export to excel
 from openpyxl import Workbook
 from openpyxl.cell import get_column_letter

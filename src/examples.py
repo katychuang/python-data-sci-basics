@@ -183,6 +183,16 @@ print("4.b More functions")
 from my_utils import write_brand_and_price_to_file
 write_brand_and_price_to_file('test.csv', hermes_ties)
 
+from my_utils import write_min_max_csv, write_two_cols, write_append_file
+write_min_max_csv('write_min_max.csv', hermes_ties[1:])
+
+write_two_cols('write_two_cols.csv', hermes_ties[1:], 3, 7)
+
+write_append_file('write_min_max.csv', jcrew_ties[1:])
+
+from my_utils import write_sorted_prices, write_sorted_string
+write_sorted_prices('write_sorted_price.csv', jcrew_ties[1:], "ascending")
+
 # Exporting to Excel
 print("4.c Exporting to Excel")
 
