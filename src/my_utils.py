@@ -39,7 +39,10 @@ def find_average(data_sample, headers=False):
         total -= 1
 
     average = total / size
-    return average
+    
+    # return average   
+    
+    return '{:03.2f}'.format(average) #nicely formatted to 2 decimals
 
 #2.d. Max, Min
 # Find the maximum price

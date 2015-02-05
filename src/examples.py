@@ -79,6 +79,11 @@ print("\n2.c. Average")
 from my_utils import find_average
 print("Average:", find_average(data_from_csv, True))
 
+midpoint = round(len(data_from_csv)/2)
+print("Average of first half", find_average(data_from_csv[:midpoint], True))
+print("Average of last half", find_average(data_from_csv[midpoint:], False))
+
+
 price_in_float = [float(item) for item in price]
 print("Average (numpy):", find_numpy_average(price_in_float))
 
