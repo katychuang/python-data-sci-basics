@@ -88,6 +88,30 @@ def find_max_min(the_data, col, m):
 ## Stage 3 begin
 # Stage 3: Cleaning data
 
+def create_bool_field_from_search_term(data_sample, search_term):
+    new_array = []
+    new_array.append(data_sample[0].append("cashmere"))
+
+    for row in data_sample[1:]:
+        new_bool_field=False
+        if search_term in row[7]:
+            new_bool_field=True
+        
+        row.append(new_bool_field)
+        new_array.append(row)
+
+    return new_array 
+
+#filter by boolean
+def filter_col_by_bool(the_data, col):
+    filtered_rows = []
+    
+    for row in the_data[1:]:
+        if row[col]:
+            filtered_rows.append(row)
+            
+    return filtered_rows
+
 # Filter rows were columns match a string data type
 def filter_col_by_string(the_data, field, filter_condition):
     filtered_rows = []

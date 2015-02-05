@@ -111,6 +111,12 @@ Quiz -
 print("3.a Cleaning data")
 
 # find cashmere ties
+my_improved_csv = create_bool_field_from_search_term(data_from_csv, "cashmere")
+print(number_of_records(my_improved_csv), "ties made with cashmere")
+
+
+print("Filtering for correct count...")
+number_cashmere_ties = filter_col_by_bool(my_improved_csv, 11)
 # add boolean fields
 
 print("3.b Filtering rows")
