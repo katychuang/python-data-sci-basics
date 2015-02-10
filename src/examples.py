@@ -174,10 +174,10 @@ Code challenge - export data
 print("4.a Exporting CSV Files")
 from my_utils import write_to_file
 ## Export Hermes Ties
-write_to_file("hermes.csv", hermes_ties)
+write_to_file("_data/hermes.csv", hermes_ties)
 
 ## Export JCrew Ties
-write_to_file("jcrew.csv", jcrew_ties)
+write_to_file("_data/jcrew.csv", jcrew_ties)
 
 ## numpy version
 print("ERROR line 173")
@@ -192,17 +192,17 @@ print("ERROR line 178")
 print("4.b More functions")
 #i.e. save two columns
 from my_utils import write_brand_and_price_to_file
-write_brand_and_price_to_file('test.csv', hermes_ties)
+write_brand_and_price_to_file('_data/test.csv', hermes_ties)
 
 from my_utils import write_min_max_csv, write_two_cols, write_append_file
-write_min_max_csv('write_min_max.csv', hermes_ties[1:])
+write_min_max_csv('_data/write_min_max.csv', hermes_ties[1:])
 
-write_two_cols('write_two_cols.csv', hermes_ties[1:], 3, 7)
+write_two_cols('_data/write_two_cols.csv', hermes_ties[1:], 3, 7)
 
-write_append_file('write_min_max.csv', jcrew_ties[1:])
+write_append_file('_data/write_min_max.csv', jcrew_ties[1:])
 
 from my_utils import write_sorted_prices, write_sorted_string
-write_sorted_prices('write_sorted_price.csv', jcrew_ties[1:], "ascending")
+write_sorted_prices('_data/write_sorted_price.csv', jcrew_ties[1:], "ascending")
 
 # Exporting to Excel
 print("4.c Exporting to Excel")
@@ -230,31 +230,31 @@ Code Challenge - create a chart
 print("5.a Line Charts")
 
 from my_utils import create_line_chart
-create_line_chart(prices_of(hermes_ties), "Distribution of Prices for Hermes Ties", "line_hermes.png")
-create_line_chart(prices_of(jcrew_ties), "Distribution of Prices for J.Crew Ties", "line_jcrew.png")
-create_line_chart(prices_of(kiton_ties), "Distribution of Prices for Kiton Ties", "line_kiton.png")
+create_line_chart(prices_of(hermes_ties), "Distribution of Prices for Hermes Ties", "_charts/line_hermes.png")
+create_line_chart(prices_of(jcrew_ties), "Distribution of Prices for J.Crew Ties", "_charts/line_jcrew.png")
+create_line_chart(prices_of(kiton_ties), "Distribution of Prices for Kiton Ties", "_charts/line_kiton.png")
 
 
 # Bar charts
 print("5.b Bar Charts")
 from numpy_utils import plot_all_bars
-plot_all_bars(price_in_float,  "all_prices.png")
-print("created all_prices.png")
+plot_all_bars(price_in_float,  "_charts/all_prices.png")
+print("_charts/created all_prices.png")
 
 from my_utils import create_bar_chart, group_prices_by_range
 price_groups = group_prices_by_range(price_in_float)
-create_bar_chart(price_groups, "price_in_groups.png") 
-print("created price_in_groups.png")
+create_bar_chart(price_groups, "_charts/price_in_groups.png") 
+print("created _charts/price_in_groups.png")
 
 
 print("5.c Tables")
 from my_utils import create_table
 brands = my_csv['brandName']
 columns = ["$0-50", "$50-100", "$100-150", "$150-200", "$200-250", "$250+"]
-write_brand_and_price_to_file("tempTableFile.csv", data_from_csv)
-brand_and_price_data = open_with_csv("tempTableFile.csv", d=',')
-create_table(brand_and_price_data, price_groups, brands, columns, "prices_in_table.png") 
-print("created prices_in_table.png")
+write_brand_and_price_to_file("_data/tempTableFile.csv", data_from_csv)
+brand_and_price_data = open_with_csv("_data/tempTableFile.csv", d=',')
+create_table(brand_and_price_data, price_groups, brands, columns, "_charts/prices_in_table.png") 
+print("created _charts/prices_in_table.png")
 
 print("5.d quickly check to see if there might be discounted items for these brands...")
 my_list = ["Burberry", "Dolce & Gabbana", "Gucci", "Yves Saint Laurent"]
