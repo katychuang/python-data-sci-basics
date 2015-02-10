@@ -122,7 +122,7 @@ def filter_col_by_string(the_data, field, filter_condition):
 
     for row in the_data[1:]:
         if row[col] == filter_condition:
-            filtered_rows.append(row)
+            filtered_rows.append([str(x).encode('utf8') for x in row])
             
     return filtered_rows
 
@@ -165,7 +165,7 @@ def filter_col_by_float(the_data, field, direction, filter_condition):
 
 #4.a csv
 def write_to_file(filename, data_sample):
-    example = csv.writer(open(filename, 'w', newline=''))
+    example = csv.writer(open(filename, 'w', newline='', encoding='utf-8'))
     example.writerows(data_sample)
 
 #4.b more functions
@@ -232,7 +232,7 @@ def write_sorted_prices(filename, data_sample, order="ascending"):
 
 #append another file
 def write_append_file(filename, new_data_to_add):
-    with open(filename, "a") as myfile:
+    with open(filename, "a", encoding='utf-8') as myfile:
         for row in new_data_to_add:
             myfile.write(str(row))
 
