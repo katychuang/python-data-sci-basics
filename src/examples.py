@@ -155,10 +155,10 @@ avg_print_ties = find_average(filter_col_by_string(data_from_csv, "print", "_pri
 avg_paisley_ties = find_average(filter_col_by_string(data_from_csv, "print", "_paisley"))
 avg_striped_ties = find_average(filter_col_by_string(data_from_csv, "print", "_striped"))
 avg_solid_ties = find_average(filter_col_by_string(data_from_csv, "print", "_solid"))
-print("Avg Print $", '{:03.2f}'.format(avg_print_ties)) 
-print("Avg Paisley $", '{:03.2f}'.format(avg_paisley_ties)) 
-print("Avg Stripes $", '{:03.2f}'.format(avg_striped_ties)) 
-print("Avg Solid $", '{:03.2f}'.format(avg_solid_ties)) 
+print("Avg Print $", avg_print_ties)
+print("Avg Paisley $", avg_paisley_ties)
+print("Avg Stripes $", avg_striped_ties)
+print("Avg Solid $", avg_solid_ties)
 
 print("\n>>> SHOWING STAGE 4 EXAMPLES")
 
