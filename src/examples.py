@@ -271,3 +271,15 @@ Edit title and axes labels
 Code Challenge - save chart image with certain resolution and labels
 """
 
+labels = ["$0-50", "$50-100", "$100-150", "$150-200", "$200-250", "$250+"] 
+plot1 = plot_minimal_graph(price_in_groups, labels)
+table_text = build_table_text(data_sample, brand_names)
+table_text = build_table_text(brand_and_price_data, brands)
+plot2 = plot_graph_with_table(table_text[0], table_text[1], labels)
+
+
+pp = PdfPages('foo.pdf')
+pp.savefig(plot1, bbox_inches='tight')
+pp.savefig(plot2, bbox_inches='tight')
+pp.close()
+
