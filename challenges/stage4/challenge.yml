@@ -1,0 +1,18 @@
+---
+name: Intro to Data Science
+
+runner: PythonRunner
+
+timeout: 10
+
+tasks:
+  - body: Using the function, filter_by_string(), how would you call it so that it exports ‘Dolce & Gabbana’ brand ties?
+    source: test_1.py
+  - body: Define a function that would allow you to filter ties made of ‘Cotton’ material and a pattern matching the string “_striped” under the striped field
+    source: test_2.py
+  - body: Define a function with two input arguments: (1) filename, and (2) a list of columns to be exported using integer values
+    source: test_3.py
+  - body: You need to export a CSV file with each sample having only three fields: brand name, price, and material. How would you call the function from task 3 that takes in two arguments (filename, list)?
+    source: test_4.py
+
+  - source: object.py

@@ -1,0 +1,14 @@
+---
+name: Intro to Data Science
+
+runner: PythonRunner
+
+timeout: 10
+
+tasks:
+  - body: Let’s open a data file with Python using the built-in CSV module. Try to import the the csv module.
+    source: test_1.py
+  - body: Let’s open a data file with Python using the built-in CSV module. Now that you have the csv module imported, write a function open_with_csv that takes one argument parameter. This function will return an empty list, data.
+    source: test_2.py
+
+  - source: object.py
