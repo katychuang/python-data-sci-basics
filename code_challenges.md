@@ -16,9 +16,9 @@ def open_with_csv(filename):
 
 ## Stage 3
 
-1. Filter all the DKNY branded ties from my_csv into dknyTies using the function filter_col_by_string()
+1. Filter all the DKNY branded ties from my_csv into dkny_ties using the function filter_col_by_string()
 
-`filter_col_by_string(data_from_csv, "brandName", "Dolce & Gabbana")`
+`filter_col_by_string(data_from_csv, "brandName", "DKNY")`
 
 2. Filter all the solid color ties under $35 to solid35 and over $45 to solid45 using the function filter_col_by_float()
 
@@ -57,10 +57,58 @@ def filter_by_brand_and_price(data, brand, price):
 
 1. Using the function, filter_col_by_string(), how would you call it so that it exports 'Dolce & Gabbana' brand ties?
 
-2. Define a function that would allow you to filter ties made of 'cotton' material and a pattern matching the string "_striped" under the striped field. This would be a function that accepts two arguments and returns a list.
+```
+dolce_gabbana = filter_col_by_string(data_from_csv, "brandName", "Dolce & Gabbana")
+```
 
-3. Define a function with two input arguments: (1) filename, and (2) a list of columns to be exported using integer values.
+2. Define a function that would allow you to filter ties made of 'cotton' material and a pattern matching the string "_striped" under the striped field. This would be a function that accepts two arguments and returns a list. (rewrite may be needed)
 
-4. Export a CSV file with each sample having only three fields: brand name, price, and material. How would you call the function from task 3 that takes in two arguments?
+```
+cotton = filter_col_by_string(data_from_csv, "material", "cotton")
+striped = filter_col_by_string(cotton, "pattern", "_striped")
+
+```
+
+3. Define a function with two input arguments: (1) filename, and (2) a list of columns to be exported using integer values. (rewrite may be needed)
+
+```
+def my_functon(filename, columns_list):
+    filename=""
+    columns_list=""
+```
+
+4. Export a CSV file with each sample having only three fields: brand name, price, and material. How would you call the function from task 3 that takes in two arguments? (rewrite may be needed)
+
+## Stage 5
+
+1. How would you start a barchart set the style to ggplot style?
+
+2. Create a data sample cotton_and_striped that has only ties made of cotton material and striped pattern using the function filter_col_by_string(). 
+
+```
+cotton_and_striped = ""
+```
+
+3. Plot the cotton and striped ties cotton_and_striped on a bar chart and set the title variable to be ‘Cotton and Stripes’ (rewrite may be needed)
 
 
+
+## Stage 6
+
+1. What module would you have to import from matplotlib to create pdfs? Write the import statement.
+
+```
+from matplotlib.backends.backend_pdf import PdfPages
+```
+
+2. How would you create a pdf object?
+
+```
+my_pdf = PdfPages('reports.pdf')
+```
+
+3. What is the code to close a pdf object stream?
+
+```
+my_pdf.close()
+``` 
