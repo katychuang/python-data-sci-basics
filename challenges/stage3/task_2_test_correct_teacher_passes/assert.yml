@@ -1,0 +1,8 @@
+---
+# The task that we should run up to
+up_to: 1
+
+# The expected results for task 1
+expected:
+  1:
+    result: pass
