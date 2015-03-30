@@ -1,0 +1,16 @@
+---
+name: Intro to Data Science
+
+runner: PythonRunner
+
+timeout: 10
+
+tasks:
+  - body: 
+    source: test_1.py
+  - body: 
+    source: test_2.py
+  - body: 
+  	source: test_3.py
+
+  - source: object.py

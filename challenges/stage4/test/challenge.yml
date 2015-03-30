@@ -1,0 +1,18 @@
+---
+name: Intro to Data Science
+
+runner: PythonRunner
+
+timeout: 10
+
+tasks:
+  - body: Filter all the DKNY branded ties from my_csv into dknyTies using the function filter_col_by_string()
+    source: test_1.py
+  - body: Filter all the solid color ties under $x to listname and over $y to another_list_name using the function filter_col_by_float()
+    source: test_2.py
+  - body: (Group)
+    source: test_3.py
+  - body: *bonus* Write a function filter_by_brand_and_price(data, brand, price) that lets you filter a dataset with two conditions
+    source: test_4.py
+
+  - source: object.py
