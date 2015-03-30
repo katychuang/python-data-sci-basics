@@ -61,12 +61,28 @@ def filter_by_brand_and_price(data, brand, price):
 dolce_gabbana = filter_col_by_string(data_from_csv, "brandName", "Dolce & Gabbana")
 ```
 
-2. Define a function that would allow you to filter ties made of 'cotton' material and a pattern matching the string "_striped" under the striped field. This would be a function that accepts two arguments and returns a list. (rewrite may be needed)
+2. Define a function that would allow you to filter ties made of 'cotton' material and a pattern matching the string "_striped" under the striped field. This would be a function that accepts two arguments and returns a list.  (rewrite may be needed)
 
 ```
 cotton = filter_col_by_string(data_from_csv, "material", "cotton")
 striped = filter_col_by_string(cotton, "pattern", "_striped")
 
+def two_cols(data_sample, field1, field1_value, field2, field2_valu):
+    filtered_rows = []
+    
+    #find index of field in the first row
+    col1 = int(the_data[0].index(field1))
+    col2 = int(the_data[0].index(field1))
+
+    filtered_rows.append(data_sample[0])
+
+    for row in data_sample[1:]:
+        if row[col1] == field1_value:
+            filtered_rows.append([str(x).encode('utf8') for x in row])
+        if row[col2] == field2_value:
+            filtered_rows.append([str(x).encode('utf8') for x in row])
+            
+    return filtered_rows
 ```
 
 3. Define a function with two input arguments: (1) filename, and (2) a list of columns to be exported using integer values. (rewrite may be needed)
@@ -79,19 +95,32 @@ def my_functon(filename, columns_list):
 
 4. Export a CSV file with each sample having only three fields: brand name, price, and material. How would you call the function from task 3 that takes in two arguments? (rewrite may be needed)
 
+```
+my_function("x.csv", "brandName", "price", "material")
+```
+
 ## Stage 5
 
-1. How would you start a barchart set the style to ggplot style?
+1. How would you create a new matplotlib figure with the pyplot module and set the chart to ggplot style? Hint: You'll want to import pyplot and use the figure function. 
+
+```
+import matplotlib.pyplot as plt
+plt.style.use('ggplot') 
+fig = plt.figure() 
+```
 
 2. Create a data sample cotton_and_striped that has only ties made of cotton material and striped pattern using the function filter_col_by_string(). 
 
 ```
-cotton_and_striped = ""
+cotton_ties = filter_col_by_string(my_data, "material", "cotton")
+cotton_and_striped = filter_col_by_string(cotton_ties, "pattern", "_striped")
 ```
 
 3. Plot the cotton and striped ties cotton_and_striped on a bar chart and set the title variable to be ‘Cotton and Stripes’ (rewrite may be needed)
 
+```
 
+```
 
 ## Stage 6
 
