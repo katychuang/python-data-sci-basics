@@ -98,7 +98,7 @@
 - [ ] 2. Define a function that would allow you to filter ties made of 'cotton' material and a print matching the string "_striped". This would be a function that accepts two arguments and returns a list.  (rewrite may be needed)
 
     ```
-    cotton = filter_col_by_string(data_from_csv, "material", "cotton")
+    cotton = filter_col_by_string(data_from_csv, "material", "_cotton")
     striped = filter_col_by_string(cotton, "print", "_striped")
 
     def two_cols(data_sample, field1, field1_value, field2, field2_valu):
@@ -162,10 +162,10 @@
     fig = plt.figure() 
     ```
 
-- [ ] 2. Create a data sample of  cotton_and_striped that has only ties made of cotton material and striped print using the function filter_col_by_string(). 
+- [x] 2. Extract a data sample from `data_from_csv` of `cotton_ties` and from that, extract a data sample `cotton_and_striped` that has only ties made of cotton material and striped print using the function `filter_col_by_string()`. 
 
     ```
-    cotton_ties = filter_col_by_string(my_data, "material", "cotton")
+    cotton_ties = filter_col_by_string(data_from_csv, "material", "_cotton")
     cotton_and_striped = filter_col_by_string(cotton_ties, "print", "_striped")
     ```
 
