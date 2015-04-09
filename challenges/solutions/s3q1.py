@@ -18,7 +18,7 @@ def filter_col_by_string(the_data, field, filter_condition):
 
     for row in the_data[1:]:
         if row[col] == filter_condition:
-            filtered_rows.append([str(x).encode('utf8') for x in row])
+            filtered_rows.append([x for x in row])
             
     return filtered_rows
 

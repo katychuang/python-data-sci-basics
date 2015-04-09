@@ -169,10 +169,12 @@
     cotton_and_striped = filter_col_by_string(cotton_ties, "print", "_striped")
     ```
 
-- [ ] 3. Plot the cotton and striped ties cotton_and_striped on a bar chart and set the title variable to be ‘Cotton and Stripes’ (rewrite may be needed)
+- [x] 3. See the example code snippet displayed [above]. We want to plot the price of the cotton and striped ties cotton_and_striped on a bar chart and set the title variable to be ‘Cotton and Stripes’. We want one of the axis labels to indicate 'Prices', and another axis label to indicate 'Ties'. How would you fill in the strings that say 'FILL THIS IN' to properly label the chart?
 
     ```
-
+    ax.set_title('Cotton and Stripes')
+    ax.set_ylabel('Price')
+    ax.set_xlabel('Ties')
     ```
 
 ## Stage 6
